@@ -1,0 +1,20 @@
+# Gradle
+.gradle
+build
+
+# IntelliJ Platform Gradle Plugin — downloaded IDE distributions, plugin
+# verification cache, sandbox instances used by runIde/runTests
+.intellijPlatform
+
+# Kotlin compiler daemon / incremental compilation cache
+.kotlin
+
+# IntelliJ IDEA project files — regenerated from build.gradle.kts on open,
+# no need to commit them
+.idea
+*.iml
+out
+
+# OS cruft
+.DS_Store
+Thumbs.db

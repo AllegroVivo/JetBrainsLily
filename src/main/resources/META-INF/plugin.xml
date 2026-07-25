@@ -1,0 +1,60 @@
+<!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
+<idea-plugin>
+    <!-- Unique identifier of the plugin. It should be FQN. It cannot be changed between the plugin versions. -->
+    <id>dev.jetbrainslily.lilypond</id>
+
+    <!-- Public plugin name should be written in Title Case.
+     Guidelines: https://plugins.jetbrains.com/docs/marketplace/best-practices-for-listing.html#plugin-name -->
+    <name>LilyPond</name>
+
+    <!-- A displayed Vendor name or Organization ID displayed on the Plugins Page. -->
+    <vendor email="stephbotcoder@gmail.com" url="https://github.com/">Stephanie</vendor>
+
+    <!-- Description of the plugin displayed on the Plugin Page and IDE Plugin Manager.
+         Guidelines: https://plugins.jetbrains.com/docs/marketplace/best-practices-for-listing.html#plugin-description -->
+    <description><![CDATA[
+        Adds IntelliJ Platform support for <a href="https://lilypond.org">LilyPond</a>
+        music engraving source files (.ly, .ily).
+        ]]></description>
+
+    <!-- Product and plugin compatibility requirements.
+         Read more: https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
+    <depends>com.intellij.modules.platform</depends>
+
+    <!-- Extensions defined by the plugin.
+         Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
+    <extensions defaultExtensionNs="com.intellij">
+        <fileType
+            name="LilyPond"
+            implementationClass="dev.jetbrainslily.lang.LilyPondFileType"
+            fieldName="INSTANCE"
+            language="LilyPond"
+            extensions="ly;ily"/>
+
+        <lang.syntaxHighlighterFactory
+            language="LilyPond"
+            implementationClass="dev.jetbrainslily.lang.highlighting.LilyPondSyntaxHighlighterFactory"/>
+
+        <lang.parserDefinition
+            language="LilyPond"
+            implementationClass="dev.jetbrainslily.lang.parser.LilyPondParserDefinition"/>
+
+        <lang.foldingBuilder
+            language="LilyPond"
+            implementationClass="dev.jetbrainslily.lang.folding.LilyPondFoldingBuilder"/>
+
+        <lang.psiStructureViewFactory
+            language="LilyPond"
+            implementationClass="dev.jetbrainslily.lang.structure.LilyPondStructureViewFactory"/>
+
+        <lang.braceMatcher
+            language="LilyPond"
+            implementationClass="dev.jetbrainslily.lang.brace.LilyPondBraceMatcher"/>
+
+        <!-- Not language-scoped like the extensions above — colorSettingsPage
+             is a top-level, application-wide extension point. Settings >
+             Editor > Color Scheme lists one entry per registered page. -->
+        <colorSettingsPage implementation="dev.jetbrainslily.lang.highlighting.LilyPondColorSettingsPage"/>
+    </extensions>
+
+</idea-plugin>
